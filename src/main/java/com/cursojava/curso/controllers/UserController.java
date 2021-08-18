@@ -30,9 +30,7 @@ public class UserController {
     //Get all users
     @RequestMapping(value = "users",method = RequestMethod.GET)
     public List<User> getUsers(){
-        List<User> users = new ArrayList<User>();
-
-        return users;
+        return userDao.getUsers();
     }
 
 

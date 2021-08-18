@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  db:
+    container_name: mysql_container
+    image: mysql
+    restart: always
+    volumes:
+      - '/home/jonnathan/Desktop/docker/Java:/var/lib/mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    
+  adminer:
+    container_name: adminer_container
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
