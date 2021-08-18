@@ -8,7 +8,9 @@ public interface UserDao {
 
     List<User> getUsers();
 
-    boolean delete(Long id);
+    boolean deleteUser(Long id);
 
-    void createUser(User user);
+    boolean createUser(User user);
+
+    User getUser(Long id);
 }

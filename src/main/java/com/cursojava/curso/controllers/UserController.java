@@ -14,34 +14,26 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
-
     @RequestMapping(value = "api/user/{id}",method = RequestMethod.GET)
     public User getUser(@PathVariable Long id){
-        User user = new User();
-        user.setId(id);
-        user.setName("Jonnathan");
-        user.setLastName("Campoberde");
-        user.setEmail("testing@testing.com");
-        user.setPhone("593984404457");
-        user.setPassword("testing");
-        return user;
+        return userDao.getUser(id);
     }
 
     //Get all users
-    @RequestMapping(value = "/api/users",method = RequestMethod.GET)
+    @RequestMapping(value = "api/users",method = RequestMethod.GET)
     public List<User> getUsers(){
         return userDao.getUsers();
     }
 
     //Create a user
-    @RequestMapping(value = "/api/users",method = RequestMethod.POST)
+    @RequestMapping(value = "api/users",method = RequestMethod.POST)
     public void createUser(@RequestBody User user){
         userDao.createUser(user);
     }
 
 
     //Update a user
-    @RequestMapping(value = "user/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "api/user/update", method = RequestMethod.PUT)
     public User updateUser(){
         User user = new User();
         user.setName("Jonnathan");
@@ -54,14 +46,14 @@ public class UserController {
 
 
     //Delete a user
-    @RequestMapping(value = "api/user/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/api/users/delete/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable Long id){
-        boolean result = userDao.delete(id);
+        boolean result = userDao.deleteUser(id);
 
     }
 
     //Search user
-    @RequestMapping(value = "user/search", method = RequestMethod.GET)
+    @RequestMapping(value = "api/user/search", method = RequestMethod.GET)
     public User searchUser(){
         User user = new User();
         user.setName("Jonnathan");
