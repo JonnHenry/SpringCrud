@@ -15,7 +15,7 @@ public class UserController {
     private UserDao userDao;
 
 
-    @RequestMapping(value = "user/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "api/user/{id}",method = RequestMethod.GET)
     public User getUser(@PathVariable Long id){
         User user = new User();
         user.setId(id);
@@ -28,9 +28,15 @@ public class UserController {
     }
 
     //Get all users
-    @RequestMapping(value = "users",method = RequestMethod.GET)
+    @RequestMapping(value = "/api/users",method = RequestMethod.GET)
     public List<User> getUsers(){
         return userDao.getUsers();
+    }
+
+    //Create a user
+    @RequestMapping(value = "/api/users",method = RequestMethod.POST)
+    public void createUser(@RequestBody User user){
+        userDao.createUser(user);
     }
 
 
@@ -48,15 +54,10 @@ public class UserController {
 
 
     //Delete a user
-    @RequestMapping(value = "user/delete", method = RequestMethod.DELETE)
-    public User deleteUser(){
-        User user = new User();
-        user.setName("Jonnathan");
-        user.setLastName("Campoberde");
-        user.setEmail("testing@testing.com");
-        user.setPhone("593984404457");
-        user.setPassword("testing");
-        return user;
+    @RequestMapping(value = "api/user/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable Long id){
+        boolean result = userDao.delete(id);
+
     }
 
     //Search user

@@ -1,13 +1,12 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-    loadUsers()
-  $('#users').DataTable();
+
 });
 
 
-async function loadUsers(){
-    const request = await fetch('http://localhost:8080/users', {
-      method: 'GET',
+async function registerUsers(){
+    const request = await fetch'/api/users', {
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -24,7 +23,7 @@ async function loadUsers(){
                 <td>${user.email}</td>
                 <td>${user.phone}</td>
                 <td>
-                    <a href="#" class="btn btn-danger btn-circle btn-sm">
+                    <a href="#" onclick='deleteUser(${user.id})' class="btn btn-danger btn-circle btn-sm">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>
@@ -33,4 +32,19 @@ async function loadUsers(){
     })
     //console.log(listUser)
     document.querySelector('#users tbody').outerHTML = listUser;
+}
+
+
+async function deleteUser(id){
+    if(confirm('Desea eliminar este usuario?'){
+        const request = await fetch'/api/users/'+id, {
+                  method: 'DELETE',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+            });
+    }
+    location.reload();
+
 }

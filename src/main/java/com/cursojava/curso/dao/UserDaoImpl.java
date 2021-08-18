@@ -19,4 +19,22 @@ public class UserDaoImpl implements UserDao{
         String query = "FROM User";
         return entityManager.createQuery(query).getResultList();
     }
+
+    @Override
+    public boolean delete(Long id) {
+        try {
+            User user = entityManager.find(User.class,id);
+            entityManager.remove(id);
+            return true;
+        }catch (NullPointerException e){
+            return false;
+        }
+
+    }
+
+    @Override
+    public void createUser(User user) {
+        entityManager.merge(user);
+
+    }
 }

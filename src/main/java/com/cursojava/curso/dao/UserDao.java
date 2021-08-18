@@ -8,4 +8,7 @@ public interface UserDao {
 
     List<User> getUsers();
 
+    boolean delete(Long id);
+
+    void createUser(User user);
 }
