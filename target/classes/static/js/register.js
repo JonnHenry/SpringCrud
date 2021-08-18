@@ -1,6 +1,6 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-
+    alert("Hola mundo")
 });
 
 async function registerUser(){
@@ -19,7 +19,7 @@ async function registerUser(){
             },
             body: JSON.stringify(datos)
         });
-        const usuarios = await request.json();
+        alert("La cuenta fue creada con exito!");
         console.log(datos);
        //location.reload();
     }else{
