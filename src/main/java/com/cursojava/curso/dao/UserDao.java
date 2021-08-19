@@ -13,4 +13,6 @@ public interface UserDao {
     boolean createUser(User user);
 
     User getUser(Long id);
+
+    boolean verifyUser(User user);
 }

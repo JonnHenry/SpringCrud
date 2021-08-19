@@ -7,6 +7,7 @@ async function login() {
   let datos = {};
   datos.email = document.getElementById('email').value;
   datos.password = document.getElementById('password').value;
+  console.log(datos);
 
   const request = await fetch('api/login', {
     method: 'POST',

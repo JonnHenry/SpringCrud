@@ -46,4 +46,18 @@ public class UserDaoImpl implements UserDao{
         User user = entityManager.find(User.class,id);
         return user;
     }
+
+    @Override
+    public boolean verifyUser(User user) {
+        String query = "FROM User WHERE email = :email AND password = :password";
+        List<User> users = entityManager.createQuery(query)
+                .setParameter("email", user.getEmail())
+                .setParameter("password", user.getPassword())
+                .getResultList();
+        return !users.isEmpty();
+
+
+    }
+
+
 }

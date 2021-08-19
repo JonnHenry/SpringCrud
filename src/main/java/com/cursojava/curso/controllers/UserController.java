@@ -52,16 +52,5 @@ public class UserController {
 
     }
 
-    //Search user
-    @RequestMapping(value = "api/user/search", method = RequestMethod.GET)
-    public User searchUser(){
-        User user = new User();
-        user.setName("Jonnathan");
-        user.setLastName("Campoberde");
-        user.setEmail("testing@testing.com");
-        user.setPhone("593984404457");
-        user.setPassword("testing");
-        return user;
-    }
 
 }
