@@ -17,6 +17,11 @@ async function login() {
     body: JSON.stringify(datos)
   });
   const response = await request.text();
+  if(response){
+    window.location.href = 'users.html'
+  }else{
+    alert("Las credenciales son incorrectas. Por favor intente nuevamente.");
+  }
   console.log(response);
 
 }
